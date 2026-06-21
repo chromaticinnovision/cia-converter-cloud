@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: cia-converter-cloud
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: SECRET_KEY
+        sync: false
+      - key: LOGIN_USERNAME
+        value: cia
+      - key: LOGIN_PASSWORD
+        sync: false
+      - key: MAX_CONTENT_LENGTH_MB
+        value: 300
